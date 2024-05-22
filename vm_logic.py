@@ -12,12 +12,27 @@ drinks = {
 }
 
 
-print("Axrail.ai Drinks")
-print("Please select a drink:🍵")
+name_width = max(len(item["drink"]) for item in drinks.values())
+price_width = max(len(f"{item['price']:.2f}") for item in drinks.values())
+key_width = len(str(max(drinks.keys())))
+
+# Define the width of the box
+total_width = key_width + name_width + price_width + 7  # Adding extra spaces for box characters and spaces
+
+# Print the top border of the box
+print("+" + "-" * (total_width - 2) + "+")
+
+
+print("        Axrail.ai Drinks            ")
+print("---- Please select a drink:🍵 ----")
 
 # print out menu available
 for k, i in drinks.items():
     print(f"{k}. {i['drink']} - RM{i['price']}")
+   
+
+# Print the bottom border of the box
+print("+" + "-" * (total_width - 2) + "+")
 
 # get input
 choose = input("Enter the item id number to purchase:")
